@@ -1,24 +1,4 @@
-﻿using Fiap.FCGames.Notifications.Domain.Aggregates;
-using Fiap.FCGames.Notifications.Infra.DataProvider.EntityConfigurations;
-using Microsoft.EntityFrameworkCore;
-
-namespace Fiap.FCGames.Notifications.Infra.DataProvider.Contexto
-{
-    public class FcGamesContexto : DbContext
-    {
-        public FcGamesContexto(DbContextOptions<FcGamesContexto> options) : base(options) { }
-
-        public DbSet<Usuario> Usuarios { get; set; }
-
-        public DbSet<BibliotecaJogos> BibliotecaJogos { get; set; }
-
-        public DbSet<TipoAcessoUsuario> TipoAcessos { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.ApplyConfiguration(new TipoAcessoUsuarioConfiguration());
-            modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
-            modelBuilder.ApplyConfiguration(new BibliotecaJogosConfiguration());
-        }
-    }
-}
+// NotificationsAPI é stateless — não utiliza banco de dados.
+// Este arquivo existe apenas para manter compatibilidade estrutural com o template.
+// NÃO registrar este contexto no Program.cs.
+// Consumers MassTransit apenas leem eventos e geram logs Serilog.
