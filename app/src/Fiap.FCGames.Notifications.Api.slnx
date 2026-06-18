@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/1.Api/">
+    <Project Path="Fiap.FCGames.Notifications.Api/Fiap.FCGames.Notifications.Api.csproj" />
+    <Project Path="Fiap.FCGames.Notifications.Application/Fiap.FCGames.Notifications.Application.csproj" />
+    <Project Path="Fiap.FCGames.Notifications.CrossCutting/Fiap.FCGames.Notifications.CrossCutting.csproj" />
+    <Project Path="Fiap.FCGames.Notifications.Domain/Fiap.FCGames.Notifications.Domain.csproj" />
+    <Project Path="Fiap.FCGames.Notifications.Infra/Fiap.FCGames.Notifications.Infra.csproj" />
+  </Folder>
+</Solution>
