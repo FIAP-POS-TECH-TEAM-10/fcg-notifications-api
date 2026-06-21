@@ -1,6 +1,5 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="Fiap.FCGames.Notifications.Worker/Fiap.FCGames.Notifications.Worker.csproj" />
-    <Project Path="Fiap.FCGames.Notifications.CrossCutting/Fiap.FCGames.Notifications.CrossCutting.csproj" />
   </Folder>
 </Solution>

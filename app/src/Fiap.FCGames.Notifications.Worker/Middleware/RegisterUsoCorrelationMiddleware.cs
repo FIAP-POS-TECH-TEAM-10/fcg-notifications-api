@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Serilog.Context;
 
-namespace Fiap.FCGames.Notifications.CrossCutting.Middleware
+namespace Fiap.FCGames.Notifications.Worker.Middleware
 {
     public static class RegisterUsoCorrelationMiddleware
     {

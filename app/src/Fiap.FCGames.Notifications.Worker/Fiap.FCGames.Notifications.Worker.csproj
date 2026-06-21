@@ -12,8 +12,4 @@
     <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Fiap.FCGames.Notifications.CrossCutting\Fiap.FCGames.Notifications.CrossCutting.csproj" />
-  </ItemGroup>
-
 </Project>

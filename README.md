@@ -56,9 +56,9 @@ dotnet run --project Fiap.FCGames.Notifications.Worker   # escuta em http://loca
 
 ```
 app/src/
-  Fiap.FCGames.Notifications.Worker/       entry point, consumers e /health
+  Fiap.FCGames.Notifications.Worker/       projeto único (host do worker)
+    Program.cs                             fiação MassTransit + /health
     Consumers/                             UsuarioCriado + PagamentoProcessado (apenas logs)
-  Fiap.FCGames.Notifications.CrossCutting/
     Middleware/                            propagação do x-correlation-ID nos logs
 ```
 

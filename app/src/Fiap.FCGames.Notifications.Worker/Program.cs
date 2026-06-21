@@ -1,5 +1,5 @@
-using Fiap.FCGames.Notifications.CrossCutting.Middleware;
 using Fiap.FCGames.Notifications.Worker.Consumers;
+using Fiap.FCGames.Notifications.Worker.Middleware;
 using MassTransit;
 using Serilog;
 
