@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fiap.FCGames.Notifications.Domain\Fiap.FCGames.Notifications.Domain.csproj" />
-    <ProjectReference Include="..\Fiap.FCGames.Notifications.Infra\Fiap.FCGames.Notifications.Infra.csproj" />
   </ItemGroup>
 
 </Project>
