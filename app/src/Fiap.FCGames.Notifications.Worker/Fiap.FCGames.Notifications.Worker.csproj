@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fiap.FCGames.Notifications.CrossCutting\Fiap.FCGames.Notifications.CrossCutting.csproj" />
+    <PackageReference Include="FCGames.IntegrationEvents" Version="1.0.0-preview.2" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.4.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
   </ItemGroup>
 
 </Project>

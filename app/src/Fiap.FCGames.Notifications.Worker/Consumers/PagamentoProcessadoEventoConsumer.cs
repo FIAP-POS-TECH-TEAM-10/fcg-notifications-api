@@ -2,7 +2,7 @@ using FCGames.IntegrationEvents;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 
-namespace Fiap.FCGames.Notifications.CrossCutting.Consumers;
+namespace Fiap.FCGames.Notifications.Worker.Consumers;
 
 public class PagamentoProcessadoEventoConsumer : IConsumer<PagamentoProcessadoEvento>
 {

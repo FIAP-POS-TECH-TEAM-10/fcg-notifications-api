@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="Fiap.FCGames.Notifications.Worker/Fiap.FCGames.Notifications.Worker.csproj" />
+  </Folder>
+</Solution>
