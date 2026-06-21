@@ -1,5 +1,3 @@
-﻿using FluentValidation;
-using Fiap.FCGames.Notifications.Domain.Exception;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Net;
@@ -33,81 +31,9 @@ namespace Fiap.FCGames.Notifications.CrossCutting.Middleware
 
         private Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
-            context.Response.ContentType = "application/json";
-
-            if (exception is ValidationException ve)
-            {
-                _logger.LogWarning("Erro de validação na requisição: {Fields}", ve.Errors.Select(e => e.PropertyName));
-                context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-
-                var validationResponse = new
-                {
-                    StatusCode = (int)HttpStatusCode.BadRequest,
-                    Errors = ve.Errors.Select(e => new
-                    {
-                        Field = e.PropertyName,
-                        Message = e.ErrorMessage
-                    })
-                };
-
-                return context.Response.WriteAsync(JsonSerializer.Serialize(validationResponse, new JsonSerializerOptions
-                {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                }));
-            }
-
-            if (exception is LoginException le)
-            {
-                _logger.LogWarning(le, "Erro de login na requisição");
-                context.Response.StatusCode = le.StatusCode;
-
-                var errorResponse = new ErrorResponse
-                {
-                    StatusCode = le.StatusCode,
-                    Message = le.Message
-                };
-
-                return context.Response.WriteAsync(JsonSerializer.Serialize(errorResponse, new JsonSerializerOptions
-                {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                }));
-            }
-
-            if (exception is NotFoundException nfe)
-            {
-                _logger.LogWarning(nfe, "Recurso não encontrado");
-                context.Response.StatusCode = (int)HttpStatusCode.NotFound;
-
-                var errorResponse = new ErrorResponse
-                {
-                    StatusCode = (int)HttpStatusCode.NotFound,
-                    Message = nfe.Message
-                };
-
-                return context.Response.WriteAsync(JsonSerializer.Serialize(errorResponse, new JsonSerializerOptions
-                {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                }));
-            }
-
-            if (exception is BusinessException be)
-            {
-                _logger.LogWarning(be, "Erro de negócio na requisição");
-                context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-
-                var errorResponse = new ErrorResponse
-                {
-                    StatusCode = (int)HttpStatusCode.BadRequest,
-                    Message = be.Message
-                };
-
-                return context.Response.WriteAsync(JsonSerializer.Serialize(errorResponse, new JsonSerializerOptions
-                {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                }));
-            }
-
             _logger.LogError(exception, "Ocorreu um erro não tratado na requisição: {Message}", exception.Message);
+
+            context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
             var response = new ErrorResponse

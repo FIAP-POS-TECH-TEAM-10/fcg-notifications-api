@@ -59,8 +59,8 @@ app/src/
   Fiap.FCGames.Notifications.Api/          entry point + /health
   Fiap.FCGames.Notifications.CrossCutting/ MassTransit, consumers, middleware
     Consumers/                             UsuarioCriado + PagamentoProcessado (apenas logs)
-  Fiap.FCGames.Notifications.Application/  behaviors MediatR (scaffolding)
-  Fiap.FCGames.Notifications.Domain/       exceções/constantes compartilhadas
+    Middleware/                            CorrelationId + tratamento de erro genérico
 ```
 
-> Serviço **stateless** — sem projeto `Infra`/EF Core e sem DbContext.
+> Serviço **stateless** e orientado a eventos — sem `Infra`/EF Core, e sem as camadas
+> `Application`/`Domain` (não há CQRS, validação HTTP nem regras de domínio aqui).
