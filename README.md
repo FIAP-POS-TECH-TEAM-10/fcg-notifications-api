@@ -59,8 +59,12 @@ app/src/
   Fiap.FCGames.Notifications.Api/          entry point + /health
   Fiap.FCGames.Notifications.CrossCutting/ MassTransit, consumers, middleware
     Consumers/                             UsuarioCriado + PagamentoProcessado (apenas logs)
-    Middleware/                            CorrelationId + tratamento de erro genérico
+    Middleware/                            propagação do x-correlation-ID nos logs
 ```
+
+> O projeto usa o SDK web (`Microsoft.NET.Sdk.Web`) **apenas** para hospedar o
+> endpoint `/health` exigido pelos probes do k8s; o MassTransit roda como hosted
+> service em background. Não há controllers nem pipeline MVC.
 
 > Serviço **stateless** e orientado a eventos — sem `Infra`/EF Core, e sem as camadas
 > `Application`/`Domain` (não há CQRS, validação HTTP nem regras de domínio aqui).

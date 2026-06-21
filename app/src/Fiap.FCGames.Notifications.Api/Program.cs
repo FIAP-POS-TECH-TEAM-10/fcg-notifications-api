@@ -12,20 +12,16 @@ Log.Logger = new LoggerConfiguration()
 builder.Logging.ClearProviders();
 builder.Host.UseSerilog();
 
-builder.Services.AddControllers();
-builder.Services.Configure<Microsoft.AspNetCore.Mvc.ApiBehaviorOptions>(options =>
-    options.SuppressModelStateInvalidFilter = true);
-
-builder.Services.AddHealthChecks();
-
+// MassTransit roda como hosted service (background) — consome os eventos do RabbitMQ.
 builder.Services.AddMassTransitRabbitMq(builder.Configuration);
+
+// Web host mínimo: existe apenas para expor /health ao liveness/readiness probe do k8s.
+builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
 app.UseCorrelationId();
-app.UseErrorHandlingMiddleware();
 
-app.MapControllers();
 app.MapHealthChecks("/health");
 
 await app.RunAsync();
