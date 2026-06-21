@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.4" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Fiap.FCGames.Notifications.Application\Fiap.FCGames.Notifications.Application.csproj" />
     <ProjectReference Include="..\Fiap.FCGames.Notifications.CrossCutting\Fiap.FCGames.Notifications.CrossCutting.csproj" />
     <ProjectReference Include="..\Fiap.FCGames.Notifications.Domain\Fiap.FCGames.Notifications.Domain.csproj" />
