@@ -47,22 +47,22 @@ Pré-requisitos: .NET 10 SDK e um RabbitMQ acessível (ex.: `docker run -d -p 56
 
 ```bash
 cd app/src
-dotnet restore Fiap.FCGames.Notifications.Api.slnx   # requer NUGET_AUTH_TOKEN se o pacote não estiver em cache
-dotnet build   Fiap.FCGames.Notifications.Api.slnx
-dotnet run --project Fiap.FCGames.Notifications.Api   # escuta em http://localhost:5004
+dotnet restore Fiap.FCGames.Notifications.slnx   # requer NUGET_AUTH_TOKEN se o pacote não estiver em cache
+dotnet build   Fiap.FCGames.Notifications.slnx
+dotnet run --project Fiap.FCGames.Notifications.Worker   # escuta em http://localhost:5004
 ```
 
 ## Estrutura
 
 ```
 app/src/
-  Fiap.FCGames.Notifications.Api/          entry point + /health
-  Fiap.FCGames.Notifications.CrossCutting/ MassTransit, consumers, middleware
+  Fiap.FCGames.Notifications.Worker/       entry point, consumers e /health
     Consumers/                             UsuarioCriado + PagamentoProcessado (apenas logs)
+  Fiap.FCGames.Notifications.CrossCutting/
     Middleware/                            propagação do x-correlation-ID nos logs
 ```
 
-> O projeto usa o SDK web (`Microsoft.NET.Sdk.Web`) **apenas** para hospedar o
+> O host (`.Worker`) usa o SDK web (`Microsoft.NET.Sdk.Web`) **apenas** para expor o
 > endpoint `/health` exigido pelos probes do k8s; o MassTransit roda como hosted
 > service em background. Não há controllers nem pipeline MVC.
 
