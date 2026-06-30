@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: notifications-worker-config
+  namespace: fcgames
+data:
+  rabbitmq-host: "rabbitmq"
+  aspnetcore-urls: "http://+:5004"
